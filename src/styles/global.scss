@@ -1,3 +1,19 @@
+@import './globals/colors.scss';
+@import './globals/typography.scss';
+
 body {
-    background-color: red;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: $WHITE;
+    font-size: 1.5em;
+}
+
+body, html {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
 }
