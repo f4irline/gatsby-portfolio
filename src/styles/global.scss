@@ -1,5 +1,6 @@
 @import './globals/colors.scss';
 @import './globals/typography.scss';
+@import './globals/breakpoints.scss';
 
 body {
     height: 100%;
@@ -7,7 +8,27 @@ body {
     margin: 0;
     padding: 0;
     background-color: $WHITE;
-    font-size: 1.5em;
+    font-size: 1em;
+
+    @media screen and (min-width: $PHONE_BREAKPOINT) {
+        font-size: 1.1em;
+    }
+
+    @media screen and (min-width: $TABLET_BREAKPOINT) {
+        font-size: 1.2em;
+    }
+
+    @media screen and (min-width: $SMALL_SCREEN_BREAKPOINT) {
+        font-size: 1.3em;
+    }
+
+    @media screen and (min-width: $MEDIUM_SCREEN_BREAKPOINT) {
+        font-size: 1.4em;
+    }
+
+    @media screen and (min-width: $LARGE_SCREEN_BREAKPOINT) {
+        font-size: 1.5em;
+    }
 }
 
 body, html {
