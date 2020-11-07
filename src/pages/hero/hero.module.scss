@@ -1,0 +1,23 @@
+.heroContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    padding: 0 5%;
+
+    hr {
+        align-self: center;
+        padding: 0;
+        margin: 5% 0;
+        width: 90%
+    }
+
+    .social {
+        align-self: center;
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+    }
+}
