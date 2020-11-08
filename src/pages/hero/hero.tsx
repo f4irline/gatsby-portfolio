@@ -44,9 +44,11 @@ export default function Hero(): JSX.Element {
     return (
         <div className={styles.heroContainer}>
             <div className={styles.heroHeader}>
-                <Fade left>
-                    <h1 className="title-huge uppercase">Hello</h1>
-                </Fade>
+                <h1 className="title-huge uppercase">
+                    <Fade left cascade>
+                        Hello
+                    </Fade>
+                </h1>
                 <Fade>
                     <span className={styles.intro}>
                         My name is Tommi. I&apos;m a{' '}
