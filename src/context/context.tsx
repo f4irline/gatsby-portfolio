@@ -1,6 +1,13 @@
 import React from 'react';
+import { HeroData } from '../models';
 
-const PortfolioContext = React.createContext<any>(undefined);
+interface IPortfolioContext {
+    hero: HeroData | undefined;
+}
+
+const PortfolioContext = React.createContext<IPortfolioContext>({
+    hero: undefined,
+});
 
 export const PortfolioProvider = PortfolioContext.Provider;
 export const PortfolioConsumer = PortfolioContext.Consumer;

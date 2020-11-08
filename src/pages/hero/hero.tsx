@@ -1,11 +1,12 @@
 import styles from './hero.module.scss';
-import React from 'react';
+import React, { useContext } from 'react';
 import Fade from 'react-reveal/Fade';
 
 import githubIcon from '../../../static/img/icons/github.svg';
 import emailIcon from '../../../static/img/icons/email.svg';
 import linkedInIcon from '../../../static/img/icons/linkedin.svg';
 import tryHackMeIcon from '../../../static/img/icons/tryhackme.svg';
+import PortfolioContext from '../../context/context';
 
 interface SocialLinks {
     type: string;
@@ -15,6 +16,8 @@ interface SocialLinks {
 }
 
 export default function Hero(): JSX.Element {
+    const { hero } = useContext(PortfolioContext);
+
     const socialLinks: SocialLinks[] = [
         {
             type: 'github',
@@ -51,10 +54,8 @@ export default function Hero(): JSX.Element {
                 </h1>
                 <Fade>
                     <span className={styles.intro}>
-                        My name is Tommi. I&apos;m a{' '}
-                        <span className={styles.role}>
-                            Full Stack Web Developer.
-                        </span>
+                        My name is {hero?.name}. I&apos;m a
+                        <span className={styles.role}>{hero?.roles[0]}.</span>
                     </span>
                 </Fade>
             </div>
