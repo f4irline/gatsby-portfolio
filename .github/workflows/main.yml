@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/upload-artifact@v2
       - name: Install dependencies
         run: |
           echo Installing dependencies...
           yarn --frozen-lockfile
+      - uses: actions/upload-artifact@v2
         with:
           name: node_modules
           path: node_modules/
@@ -25,9 +25,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
+        with:
+          name: node_modules
       - name: Build
         run: |
           echo Building...
           yarn build
-        with:
-          name: node_modules
