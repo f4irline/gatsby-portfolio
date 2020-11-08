@@ -11,24 +11,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Install dependencies
         run: |
           echo Installing dependencies...
           yarn --frozen-lockfile
-      - uses: actions/upload-artifact@v2
-        with:
-          name: node_modules
-          path: node_modules/
-      
+
   build:
     needs: install_dependencies
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: node_modules
       - name: Build
+        uses: actions/checkout@v2
         run: |
           echo Building...
           yarn build
