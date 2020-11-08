@@ -31,8 +31,8 @@ jobs:
     needs: install_dependencies
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Build
-        uses: actions/checkout@v2
         run: |
           echo Building...
           yarn build
