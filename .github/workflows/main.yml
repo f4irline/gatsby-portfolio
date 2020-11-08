@@ -59,5 +59,7 @@ jobs:
           name: public
       - name: Publish to S3
         env:
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_DEFAULT_REGION: eu-north-1
         run: yarn deploy
