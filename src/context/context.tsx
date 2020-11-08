@@ -1,12 +1,14 @@
 import React from 'react';
-import { HeroData } from '../models';
+import { HeroData, SocialLink } from '../models';
 
 interface IPortfolioContext {
     hero: HeroData | undefined;
+    socialLinks: SocialLink[];
 }
 
 const PortfolioContext = React.createContext<IPortfolioContext>({
     hero: undefined,
+    socialLinks: [],
 });
 
 export const PortfolioProvider = PortfolioContext.Provider;
