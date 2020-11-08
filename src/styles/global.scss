@@ -1,6 +1,7 @@
 @import './globals/colors.scss';
 @import './globals/typography.scss';
 @import './globals/breakpoints.scss';
+@import './globals/fonts.scss';
 
 body {
     height: 100%;
@@ -9,6 +10,7 @@ body {
     padding: 0;
     background-color: $WHITE;
     font-size: 1em;
+    font-family: Karla;
 
     @media screen and (min-width: $PHONE_BREAKPOINT) {
         font-size: 1.1em;

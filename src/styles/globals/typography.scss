@@ -1,3 +1,14 @@
-span.title-huge {
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+h1 {
     font-size: 6em;
+    font-family: RubikBold;
+}
+
+h1, h2, h3, h4, h5 {
+    &.uppercase {
+        text-transform: uppercase;
+    }
 }
