@@ -17,7 +17,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-s3`,
             options: {
-                bucketName: 'gatsby-portfolio-f4irline',
+                bucketName: 'tommilepola.fi',
             },
         },
     ],
