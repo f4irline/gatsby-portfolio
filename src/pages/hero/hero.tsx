@@ -17,8 +17,8 @@ export default function Hero(): JSX.Element {
                 </h1>
                 <Fade>
                     <span className={styles.intro}>
-                        My name is {hero?.name}. I&apos;m a
-                        <span className={styles.role}>{hero?.roles[0]}.</span>
+                        My name is {hero?.name}. I&apos;m a&nbsp;
+                        <span className={styles.role}>£{hero?.roles[0]}.</span>
                     </span>
                 </Fade>
             </div>
