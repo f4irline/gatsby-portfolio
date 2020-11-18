@@ -4,7 +4,7 @@ import Fade from 'react-reveal/Fade';
 
 import PortfolioContext from '../../context/context';
 
-export default function Hero(): JSX.Element | null {
+export default function Hero(): JSX.Element {
     const { hero, socialLinks } = useContext(PortfolioContext);
 
     return (
