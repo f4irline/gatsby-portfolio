@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
 
     return (
         <PortfolioProvider value={{ hero, socialLinks }}>
-            {hero && <Hero></Hero>}
+            <Hero></Hero>
         </PortfolioProvider>
     );
 }
