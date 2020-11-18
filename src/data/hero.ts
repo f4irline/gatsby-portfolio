@@ -13,7 +13,7 @@ const socialLinks: SocialLink[] = [
     {
         type: 'github',
         imgPath: githubIcon,
-        url: 'https://linkedin.com/in/tommilepola',
+        url: 'https://github.com/f4irline',
         alt: 'GitHub',
     },
     {
