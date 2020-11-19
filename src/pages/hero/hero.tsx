@@ -8,7 +8,7 @@ export default function Hero(): JSX.Element | null {
     const { hero, socialLinks } = useContext(PortfolioContext);
 
     return !hero ? null : (
-        <Fade ssrFade duration={2000}>
+        <Fade duration={2000}>
             <div className={styles.heroContainer}>
                 <div className={styles.heroHeader}>
                     <h1 className="title-huge uppercase">
