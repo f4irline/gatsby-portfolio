@@ -49,13 +49,14 @@
 
             img {
                 width: 3em;
+                filter: invert(97%) sepia(0%) saturate(355%) hue-rotate(332deg) brightness(115%) contrast(82%);
             }    
 
             &:hover {
                 transform: scale(1.1);
 
                 img {
-                    filter: invert(60%) sepia(11%) saturate(3223%) hue-rotate(165deg) brightness(82%) contrast(86%);
+                    filter: invert(58%) sepia(56%) saturate(6720%) hue-rotate(333deg) brightness(107%) contrast(88%);
                 }
             }
         }
