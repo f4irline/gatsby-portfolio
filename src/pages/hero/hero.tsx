@@ -1,4 +1,4 @@
-import styles from './hero.module.scss';
+import * as styles from './hero.module.scss';
 import React, { useContext } from 'react';
 import Fade from 'react-reveal/Fade';
 
