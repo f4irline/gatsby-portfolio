@@ -3,9 +3,15 @@ import React, { useContext } from 'react';
 import Fade from 'react-reveal/Fade';
 
 import PortfolioContext from '../../context/context';
+import { getCvBlob } from '../../utils/api';
+import { downloadFile } from '../../utils/file';
 
 export default function Hero(): JSX.Element | null {
     const { hero, socialLinks } = useContext(PortfolioContext);
+    const downloadCv = async () => {
+        const blob = await getCvBlob();
+        downloadFile(blob, 'cv_tommi-lepola_2022');
+    };
 
     return !hero ? null : (
         <Fade duration={2000}>
@@ -29,6 +35,7 @@ export default function Hero(): JSX.Element | null {
                         </a>
                     ))}
                 </div>
+                <button onClick={downloadCv}>Click!</button>
             </div>
         </Fade>
     );
