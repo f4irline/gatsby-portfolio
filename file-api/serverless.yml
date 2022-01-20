@@ -1,0 +1,26 @@
+service: file-api
+frameworkVersion: '2 || 3'
+
+custom:
+  bucket: tommilepola.fi-file-bucket
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+  region: eu-central-1
+
+functions:
+  getCvUrl:
+    handler: handler.getCvUrl
+    events:
+      - http:
+          path: /cv_url
+          method: get
+          cors:
+            origin: '*'
+    environment:
+      BUCKET: ${self:custom.bucket}
+
+plugins:
+  - serverless-plugin-typescript
