@@ -21,6 +21,10 @@ module.exports = {
             'error',
             {
                 endOfLine: 'auto',
+                singleQuote: true,
+                arrowParens: 'avoid',
+                semi: true,
+                tabWidth: 4,
             },
         ],
     },
