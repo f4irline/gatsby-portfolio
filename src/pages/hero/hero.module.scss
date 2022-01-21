@@ -74,8 +74,12 @@
             cursor: pointer;
 
             img {
-                width: 4em;
+                width: 3.5em;
                 filter: invert(97%) sepia(0%) saturate(355%) hue-rotate(332deg) brightness(115%) contrast(82%);
+
+                @media screen and (min-width: $TABLET_BREAKPOINT) {
+                    width: 3em;
+                }
             }    
 
             &:hover {
@@ -85,10 +89,6 @@
                     filter: invert(58%) sepia(56%) saturate(6720%) hue-rotate(333deg) brightness(107%) contrast(88%);
                 }
             }
-
-            @media screen and (min-width: $TABLET_BREAKPOINT) {
-                width: 3em;
-            }        
         }
     }
 }
