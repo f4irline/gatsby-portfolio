@@ -1,13 +1,15 @@
 'use strict';
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const AWS = require('aws-sdk');
+const client = new AWS.S3({
+    region: 'eu-central-1',
+});
 
-const client = new S3Client({ region: 'eu-central-1' });
-
-module.exports.getCvUrl = async () => {
-    return client.send(
-        new GetObjectCommand({
+export function getCvUrl() {
+    return client
+        .getObject({
             Bucket: process.env.BUCKET,
             Key: 'resume_tommi-lepola.pdf',
         })
-    );
-};
+        .promise();
+}

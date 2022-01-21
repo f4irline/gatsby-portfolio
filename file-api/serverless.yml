@@ -2,19 +2,28 @@ service: file-api
 frameworkVersion: '2 || 3'
 
 custom:
-  bucket: tommilepola.fi-file-bucket
+  bucket: tommilepola.fi-files
 
 provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: '20201221'
   region: eu-central-1
+  stage: prod
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:GetObjectAcl
+          Resource: "arn:aws:s3:::${self:custom.bucket}/*"
 
 functions:
   getCvUrl:
     handler: handler.getCvUrl
     events:
-      - http:
+      - httpApi:
           path: /cv_url
           method: get
           cors:
