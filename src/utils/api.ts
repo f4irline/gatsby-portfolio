@@ -5,7 +5,7 @@ export const getCvUrl = async () => {
         `${
             process.env.NODE_ENV === 'development'
                 ? LAMBDA_DEV_URL
-                : process.env.LAMBDA_ENDPOINT_URL
+                : process.env.GATSBY_LAMBDA_ENDPOINT
         }/cv_url`,
         {
             method: 'GET',
