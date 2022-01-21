@@ -32,6 +32,8 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Build
+        env:
+          LAMBDA_ENDPOINT_URL: ${{ secrets.AWS_LAMBDA_URL }}
         run: |
           echo Building...
           yarn build
