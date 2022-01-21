@@ -3,13 +3,20 @@ frameworkVersion: '2 || 3'
 
 custom:
   bucket: tommilepola.fi-files
+  region: eu-central-1
 
 provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: '20201221'
-  region: eu-central-1
+  region: ${self:custom.region}
   stage: prod
+  httpApi:
+    cors:
+      allowedOrigins:
+        - '*'
+      allowedHeaders:
+        - Content-Type
   iam:
     role:
       statements:
@@ -26,10 +33,9 @@ functions:
       - httpApi:
           path: /cv_url
           method: get
-          cors:
-            origin: '*'
     environment:
       BUCKET: ${self:custom.bucket}
+      REGION: ${self:custom.region}
 
 plugins:
   - serverless-plugin-typescript

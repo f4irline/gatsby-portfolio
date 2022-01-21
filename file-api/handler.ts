@@ -1,15 +1,12 @@
 'use strict';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const AWS = require('aws-sdk');
-const client = new AWS.S3({
-    region: 'eu-central-1',
-});
 
 export function getCvUrl() {
-    return client
-        .getObject({
-            Bucket: process.env.BUCKET,
-            Key: 'resume_tommi-lepola.pdf',
-        })
-        .promise();
+    const fileName = 'resume_tommi-lepola.pdf';
+    return new Promise((resolve, reject) =>
+        process.env.BUCKET && process.env.REGION
+            ? resolve({
+                  fileUrl: `https://s3.${process.env.REGION}.amazonaws.com/${process.env.BUCKET}/${fileName}`,
+              })
+            : reject(new Error('Bucket or region not defined.'))
+    );
 }
