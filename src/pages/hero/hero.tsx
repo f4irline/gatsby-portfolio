@@ -3,14 +3,15 @@ import React, { useContext } from 'react';
 import Fade from 'react-reveal/Fade';
 
 import PortfolioContext from '../../context/context';
-import { getCvBlob } from '../../utils/api';
+import { getCvBlob, getCvUrl } from '../../utils/api';
 import { downloadFile } from '../../utils/file';
 
 export default function Hero(): JSX.Element | null {
     const { hero, socialLinks } = useContext(PortfolioContext);
     const downloadCv = async () => {
-        const blob = await getCvBlob();
-        downloadFile(blob, 'cv_tommi-lepola_2022');
+        const url = await getCvUrl();
+        const blob = await getCvBlob(url);
+        downloadFile(blob, 'cv_tommi-lepola_2022.pdf');
     };
 
     return !hero ? null : (
