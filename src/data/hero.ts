@@ -2,6 +2,9 @@ import { HeroData, SocialLink } from '../models';
 import githubIcon from '../../static/img/icons/github.svg';
 import emailIcon from '../../static/img/icons/email.svg';
 import linkedInIcon from '../../static/img/icons/linkedin.svg';
+import cvIcon from '../../static/img/icons/cv.svg';
+import { getCvBlob, getCvUrl } from '../utils/api';
+import { downloadFile } from '../utils/file';
 
 const heroData: HeroData = {
     name: 'Tommi',
@@ -26,6 +29,16 @@ const socialLinks: SocialLink[] = [
         imgPath: emailIcon,
         url: 'mailto:lepola.tommi@gmail.com',
         alt: 'Email',
+    },
+    {
+        type: 'cv',
+        imgPath: cvIcon,
+        alt: 'CV',
+        fn: async () => {
+            const url = await getCvUrl();
+            const blob = await getCvBlob(url);
+            downloadFile(blob, 'cv_tommi-lepola_2022.pdf');
+        },
     },
 ];
 

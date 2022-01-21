@@ -1,12 +1,12 @@
+const LAMBDA_DEV_URL = '';
+
 export const getCvUrl = async () => {
-    // const response = await fetch(`${process.env.LAMBDA_ENDPOINT_URL}/cv_url`, {
-    //     method: 'GET',
-    //     headers: {
-    //         'Content-Type': 'application/pdf',
-    //     },
-    // });
     const response = await fetch(
-        'https://dypbcd1pl9.execute-api.eu-central-1.amazonaws.com/cv_url',
+        `${
+            process.env.NODE_ENV === 'development'
+                ? LAMBDA_DEV_URL
+                : process.env.LAMBDA_ENDPOINT_URL
+        }/cv_url`,
         {
             method: 'GET',
             headers: {
