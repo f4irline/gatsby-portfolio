@@ -31,6 +31,11 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Set .env.production
+        run: |
+          echo Setting .env.production...
+          touch .env.production
+          echo LAMBDA_ENDPOINT=${{ secrets.LAMBDA_ENDPOINT }} >> .env.production
       - name: Build
         env:
           LAMBDA_ENDPOINT_URL: ${{ secrets.AWS_LAMBDA_URL }}

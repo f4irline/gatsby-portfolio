@@ -1,19 +1,13 @@
-const LAMBDA_DEV_URL = '';
+const LAMBDA_URL =
+    process.env.NODE_ENV === 'development' ? '' : process.env.LAMBDA_ENDPOINT;
 
 export const getCvUrl = async () => {
-    const response = await fetch(
-        `${
-            process.env.NODE_ENV === 'development'
-                ? LAMBDA_DEV_URL
-                : process.env.GATSBY_LAMBDA_ENDPOINT
-        }/cv_url`,
-        {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-    );
+    const response = await fetch(`${LAMBDA_URL}/cv_url`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
     const { fileUrl } = await response.json();
     return fileUrl;
 };
