@@ -14,7 +14,7 @@ provider:
   httpApi:
     cors:
       allowedOrigins:
-        - '*'
+        - 'https://tommilepola.fi'
       allowedHeaders:
         - Content-Type
   iam:
