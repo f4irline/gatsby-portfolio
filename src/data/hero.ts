@@ -37,7 +37,7 @@ const socialLinks: SocialLink[] = [
         fn: async () => {
             const url = await getCvUrl();
             const blob = await getCvBlob(url);
-            downloadFile(blob, 'cv_tommi-lepola_2022.pdf');
+            downloadFile(blob, 'resume_tommi-lepola.pdf');
         },
     },
 ];
