@@ -54,6 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: public
+          include-hidden-files: true
           path: |
             public/
             .cache/
