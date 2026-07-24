@@ -1,0 +1,161 @@
+---
+import { site } from '../data/site';
+---
+
+<main class="hero-container">
+    <header class="hero-header">
+        <h1>Hello</h1>
+        <p class="intro">
+            My name is {site.name}. I'm a <span class="role">{site.role}.</span>
+        </p>
+    </header>
+    <hr />
+    <nav class="social-links" aria-label="Tommi Lepola's links">
+        {
+            site.socialLinks.map((link) => (
+                <a href={link.url} aria-label={link.label}>
+                    <img src={link.icon} alt="" width="56" height="56" />
+                </a>
+            ))
+        }
+    </nav>
+</main>
+
+<style>
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0 5%;
+    }
+
+    .hero-header {
+        line-height: 1.2;
+    }
+
+    h1,
+    .role {
+        color: var(--color-primary);
+    }
+
+    h1 {
+        margin: 0;
+        font-family: 'Rubik', sans-serif;
+        font-size: clamp(4rem, 15vw, 6rem);
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .intro {
+        margin: 0;
+        font-size: 1.5em;
+    }
+
+    .role {
+        font-family: 'Karla', sans-serif;
+        font-weight: 700;
+    }
+
+    hr {
+        align-self: center;
+        width: 90%;
+        margin: 3% 0;
+        border: 0;
+        border-top: 1px solid currentcolor;
+    }
+
+    .social-links {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.25rem;
+        color: inherit;
+        transition: transform 0.2s ease;
+    }
+
+    .social-links img {
+        width: 3.5em;
+        height: auto;
+        filter: invert(97%) sepia(0%) saturate(355%) hue-rotate(332deg)
+            brightness(115%) contrast(82%);
+    }
+
+    .social-links a:hover {
+        transform: scale(1.1);
+    }
+
+    .social-links a:hover img,
+    .social-links a:focus-visible img {
+        filter: invert(58%) sepia(56%) saturate(6720%) hue-rotate(333deg)
+            brightness(107%) contrast(88%);
+    }
+
+    .social-links a:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 0.35rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        .hero-container {
+            padding: 0 10%;
+            font-size: 1.1em;
+        }
+    }
+
+    @media screen and (min-width: 960px) {
+        .hero-container {
+            padding: 0 12%;
+            font-size: 1.2em;
+        }
+
+        .social-links img {
+            width: 3em;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .hero-container {
+            padding: 0 14%;
+            font-size: 1.3em;
+        }
+    }
+
+    @media screen and (min-width: 1366px) {
+        .hero-container {
+            padding: 0 16%;
+            font-size: 1.4em;
+        }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .hero-container {
+            animation: fade-in 2s ease both;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .social-links a {
+            transition: none;
+        }
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>

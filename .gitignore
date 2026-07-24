@@ -54,9 +54,11 @@ jspm_packages/
 # dotenv environment variable files
 .env*
 
-# gatsby files
-.cache/
-public
+# Astro build files
+.astro/
+dist/
+playwright-report/
+test-results/
 
 # Mac files
 .DS_Store

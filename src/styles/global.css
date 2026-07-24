@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Karla';
+    src: url('/fonts/karla/Karla-Regular.ttf') format('truetype');
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('/fonts/karla/Karla-Bold.ttf') format('truetype');
+    font-display: swap;
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('/fonts/rubik/Rubik-Bold.ttf') format('truetype');
+    font-display: swap;
+    font-style: normal;
+    font-weight: 700;
+}
+
+:root {
+    --color-text: #e8e8e8;
+    --color-primary: #f05454;
+    --color-background: #222831;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: 'Karla', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    font-size: 1em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    body {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        font-size: 1.3em;
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    body {
+        font-size: 1.4em;
+    }
+}
+
+@media screen and (min-width: 1680px) {
+    body {
+        font-size: 1.5em;
+    }
+}

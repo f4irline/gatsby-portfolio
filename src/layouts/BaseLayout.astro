@@ -1,0 +1,45 @@
+---
+import { site } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { title = site.title, description = site.description } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, site.url).toString();
+const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Tommi Lepola',
+    url: site.url,
+    email: site.email,
+    sameAs: site.socialLinks.slice(0, 2).map(({ url }) => url),
+};
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={canonicalUrl} />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)}></script>
+        <title>{title}</title>
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>

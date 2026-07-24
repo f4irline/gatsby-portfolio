@@ -1,44 +1,36 @@
 {
-  "name": "tommi-lepola-gatsby-portfolio",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
-  "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "deploy": "gatsby-plugin-s3 deploy",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "dependencies": {
-    "gatsby": "^4.5.4",
-    "gatsby-plugin-sass": "^5.5.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-reveal": "^1.2.2",
-    "sass": "^1.49.0"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/parser": "^5.10.0",
-    "eslint": "^8.7.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-react-app": "^7.0.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "gatsby-plugin-s3": "^0.3.8",
-    "prettier": "2.5.1",
-    "typescript": "^4.5.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/f4irline/gatsby-portfolio"
-  },
-  "bugs": {
-    "url": "https://github.com/f4irline/gatsby-portfolio/issues"
-  }
+    "name": "tommi-lepola-portfolio",
+    "private": true,
+    "description": "Tommi Lepola's static portfolio site",
+    "version": "0.1.0",
+    "license": "0BSD",
+    "scripts": {
+        "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+        "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+        "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+        "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+        "format": "prettier --write README.md package.json tsconfig.json astro.config.mjs playwright.config.ts prettier.config.mjs .github/workflows/*.yml src tests scripts",
+        "format:check": "prettier --check README.md package.json tsconfig.json astro.config.mjs playwright.config.ts prettier.config.mjs .github/workflows/*.yml src tests scripts",
+        "test": "playwright test",
+        "test:links": "node scripts/check-local-links.mjs"
+    },
+    "engines": {
+        "node": ">=24.0.0",
+        "npm": ">=11.0.0"
+    },
+    "devDependencies": {
+        "@astrojs/check": "^0.9.9",
+        "@axe-core/playwright": "^4.11.0",
+        "@playwright/test": "^1.55.0",
+        "astro": "^7.1.3",
+        "prettier": "^3.6.2",
+        "typescript": "^5.9.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/f4irline/gatsby-portfolio"
+    },
+    "bugs": {
+        "url": "https://github.com/f4irline/gatsby-portfolio/issues"
+    }
 }
