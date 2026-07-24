@@ -9,8 +9,8 @@
         "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
         "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
         "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
-        "format": "prettier --write README.md package.json tsconfig.json astro.config.mjs playwright.config.ts prettier.config.mjs .github/workflows/*.yml src tests scripts",
-        "format:check": "prettier --check README.md package.json tsconfig.json astro.config.mjs playwright.config.ts prettier.config.mjs .github/workflows/*.yml src tests scripts",
+        "format": "prettier --write README.md package.json tsconfig.json astro.config.mjs playwright.config.ts prettier.config.mjs .github/dependabot.yml .github/workflows/*.yml src tests scripts",
+        "format:check": "prettier --check README.md package.json tsconfig.json astro.config.mjs playwright.config.ts prettier.config.mjs .github/dependabot.yml .github/workflows/*.yml src tests scripts",
         "test": "playwright test",
         "test:links": "node scripts/check-local-links.mjs"
     },
