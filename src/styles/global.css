@@ -23,9 +23,15 @@
 }
 
 :root {
-    --color-text: #e8e8e8;
-    --color-primary: #f05454;
-    --color-background: #222831;
+    --color-background: #171c24;
+    --color-surface: #202733;
+    --color-text: #f2efe9;
+    --color-muted: #aab4c1;
+    --color-primary: #ff6157;
+    --color-border: rgb(242 239 233 / 16%);
+    --color-primary-soft: rgb(255 97 87 / 12%);
+    --content-width: 73.75rem;
+    --radius-small: 0.35rem;
     background-color: var(--color-background);
     color: var(--color-text);
     font-family: 'Karla', sans-serif;
@@ -40,39 +46,37 @@ body {
 
 body {
     overflow-x: hidden;
-    font-size: 1em;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 * {
     box-sizing: border-box;
 }
 
-@media screen and (min-width: 768px) {
-    body {
-        font-size: 1.1em;
-    }
+body::before {
+    position: fixed;
+    z-index: -1;
+    top: -25rem;
+    right: -20rem;
+    width: min(60rem, 85vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(255 97 87 / 9%), transparent 68%);
+    content: '';
+    pointer-events: none;
 }
 
-@media screen and (min-width: 960px) {
-    body {
-        font-size: 1.2em;
-    }
+a {
+    color: inherit;
 }
 
-@media screen and (min-width: 1024px) {
-    body {
-        font-size: 1.3em;
-    }
-}
-
-@media screen and (min-width: 1366px) {
-    body {
-        font-size: 1.4em;
-    }
-}
-
-@media screen and (min-width: 1680px) {
-    body {
-        font-size: 1.5em;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
     }
 }
