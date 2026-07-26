@@ -69,3 +69,8 @@ The deployment role must use GitHub Actions OIDC and be restricted to the
 required S3 upload and CloudFront invalidation operations. No long-lived AWS
 access keys are used. Review the generated `dist/` output and obtain explicit
 production approval before enabling or merging the deployment workflow.
+
+The current CloudFront origin requires public-readable S3 objects. The deploy
+role therefore also needs `s3:PutObjectAcl` on `arn:aws:s3:::tommilepola.fi/*`.
+This is a temporary compatibility measure until the origin is migrated to
+CloudFront Origin Access Control.
