@@ -9,6 +9,7 @@ test('renders the hero and its four primary links', async ({ page }) => {
             name: 'Senior software developer building useful digital products.',
         }),
     ).toBeVisible();
+    await expect(page.getByAltText('Portrait of Tommi Lepola')).toBeVisible();
     await expect(
         page.getByText(
             'I design and build reliable web applications and AI-enabled solutions, from architecture and hands-on development to production.',
