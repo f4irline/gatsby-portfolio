@@ -19,11 +19,39 @@ jobs:
               uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
               with:
                   github-token: '${{ secrets.GITHUB_TOKEN }}'
+            - name: Determine auto-merge eligibility
+              id: eligibility
+              env:
+                  UPDATE_TYPE: '${{ steps.metadata.outputs.update-type }}'
+                  PREVIOUS_VERSION: '${{ steps.metadata.outputs.previous-version }}'
+                  NEW_VERSION: '${{ steps.metadata.outputs.new-version }}'
+              run: |
+                  eligible=false
+
+                  if [[ "$UPDATE_TYPE" == 'version-update:semver-patch' || "$UPDATE_TYPE" == 'version-update:semver-minor' ]]; then
+                      eligible=true
+                  elif [[ "$PREVIOUS_VERSION" =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+                      previous_major="${BASH_REMATCH[1]}"
+                      previous_minor="${BASH_REMATCH[2]}"
+                      previous_patch="${BASH_REMATCH[3]}"
+
+                      if [[ "$NEW_VERSION" =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+                          new_major="${BASH_REMATCH[1]}"
+                          new_minor="${BASH_REMATCH[2]}"
+                          new_patch="${BASH_REMATCH[3]}"
+
+                          if ((10#$previous_major == 10#$new_major)) &&
+                              (((10#$new_minor > 10#$previous_minor)) ||
+                                  ((10#$new_minor == 10#$previous_minor && 10#$new_patch > 10#$previous_patch))); then
+                              eligible=true
+                          fi
+                      fi
+                  fi
+
+                  echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
             - name: Enable auto-merge for minor and patch updates
-              if: >-
-                  steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
-                  steps.metadata.outputs.update-type == 'version-update:semver-minor'
-              run: gh pr merge --auto --merge "$PR_URL"
+              if: steps.eligibility.outputs.eligible == 'true'
+              run: gh pr merge --auto --rebase "$PR_URL"
               env:
                   GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
                   PR_URL: '${{ github.event.pull_request.html_url }}'
