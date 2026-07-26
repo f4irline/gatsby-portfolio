@@ -173,11 +173,24 @@ import { site } from '../data/site';
         .hero-container {
             display: grid;
             align-items: center;
+            padding-block: clamp(2rem, 4vh, 3.5rem);
         }
 
         .profile {
             grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.8fr);
             gap: clamp(3rem, 8vw, 8rem);
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6.2vw, 5.75rem);
+        }
+
+        .copy {
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .social-links {
+            margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
         }
     }
 
