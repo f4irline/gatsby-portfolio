@@ -4,9 +4,15 @@ import AxeBuilder from '@axe-core/playwright';
 test('renders the hero and its four primary links', async ({ page }) => {
     await page.goto('/');
 
-    await expect(page.getByRole('heading', { name: 'Hello' })).toBeVisible();
     await expect(
-        page.getByText("My name is Tommi. I'm a Full Stack Web Developer."),
+        page.getByRole('heading', {
+            name: 'Senior software developer building useful digital products.',
+        }),
+    ).toBeVisible();
+    await expect(
+        page.getByText(
+            'I design and build reliable web applications and AI-enabled solutions, from architecture and hands-on development to production.',
+        ),
     ).toBeVisible();
 
     const links = page
@@ -14,8 +20,12 @@ test('renders the hero and its four primary links', async ({ page }) => {
         .getByRole('link');
     await expect(links).toHaveCount(4);
 
-    for (const link of await links.all()) {
-        await expect(link).toHaveAttribute('href', /.+/);
+    for (const name of ['GitHub', 'LinkedIn', 'Email', 'Résumé (PDF)']) {
+        await expect(
+            page
+                .getByRole('navigation', { name: "Tommi Lepola's links" })
+                .getByRole('link', { name }),
+        ).toHaveAttribute('href', /.+/);
     }
 });
 
@@ -23,8 +33,11 @@ test('has visible keyboard focus and does not overflow mobile or desktop viewpor
     page,
 }) => {
     for (const viewport of [
+        { width: 320, height: 568 },
         { width: 375, height: 667 },
+        { width: 768, height: 1024 },
         { width: 1440, height: 900 },
+        { width: 900, height: 450 },
     ]) {
         await page.setViewportSize(viewport);
         await page.goto('/');
