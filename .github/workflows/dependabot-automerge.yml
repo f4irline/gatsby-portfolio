@@ -51,7 +51,7 @@ jobs:
                   echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
             - name: Enable auto-merge for minor and patch updates
               if: steps.eligibility.outputs.eligible == 'true'
-              run: gh pr merge --auto --merge "$PR_URL"
+              run: gh pr merge --auto --rebase "$PR_URL"
               env:
                   GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
                   PR_URL: '${{ github.event.pull_request.html_url }}'
