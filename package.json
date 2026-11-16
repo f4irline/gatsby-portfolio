@@ -22,8 +22,8 @@
         "@astrojs/check": "^0.9.12",
         "@axe-core/playwright": "^4.14.0",
         "@playwright/test": "^1.65.0",
-        "astro": "^7.4.7",
-        "prettier": "^3.9.10",
+        "astro": "^7.4.11",
+        "prettier": "^3.10.1",
         "typescript": "^6.0.3"
     },
     "repository": {
